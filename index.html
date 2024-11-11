@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Smart Compressor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Smart Compressor</h1>
+        <div class="theme-toggle">
+            <label for="theme-switch">Hacker Theme</label>
+            <input type="checkbox" id="theme-switch">
+        </div>
+        <div class="file-upload">
+            <input type="file" id="file-input" webkitdirectory directory multiple>
+            <label for="file-input" class="upload-btn">Upload Folder</label>
+        </div>
+        <div id="file-controls" class="hidden">
+            <div class="controls">
+                <button id="select-all">Select All</button>
+                <button id="deselect-all">Deselect All</button>
+            </div>
+            <div class="file-tree" id="file-tree"></div>
+            <button id="compress-btn" disabled>Compress Selected Files</button>
+        </div>
+        <div id="progress-bar" class="progress-bar">
+            <div class="progress"></div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
