@@ -62,7 +62,7 @@ flowchart TD
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/smart-compressor.git
+git clone https://github.com/Gitesh08/smart-compressor.git
 ```
 
 2. Navigate to the project directory:
@@ -227,14 +227,14 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## 📫 Contact
 
-Developer Name - [@yourtwitter](https://twitter.com/yourtwitter)
+Developer Name - [Gitesh Mahadik](https://www.linkedin.com/in/gitesh-mahadik-7487961a0/)
 
-Project Link: [https://github.com/yourusername/smart-compressor](https://github.com/yourusername/smart-compressor)
+Project Link: [https://github.com/Gitesh08/smart-compressor](https://github.com/yourusername/smart-compressor)
 
 ## 🐛 Bug Reports
 
 Please report bugs through the GitHub issues page:
-[https://github.com/yourusername/smart-compressor/issues](https://github.com/yourusername/smart-compressor/issues)
+[https://github.com/Gitesh08/smart-compressor/issues](https://github.com/yourusername/smart-compressor/issues)
 
 Include:
 - Browser and version
