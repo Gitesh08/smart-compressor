@@ -1,0 +1,459 @@
+:root {
+    --bg-color: #f0f0f0;
+    --text-color: #333;
+    --accent-color: #4CAF50;
+    --hover-color: #45a049;
+    --folder-color: #ffd700;
+    --file-color: #ffffff;
+    --glitch-color1: #ff0000;
+    --glitch-color2: #0000ff;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.theme-toggle {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.theme-toggle label {
+    margin-right: 10px;
+}
+
+.file-upload {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.upload-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.upload-btn:hover {
+    background-color: var(--hover-color);
+}
+
+#file-input {
+    display: none;
+}
+
+.controls {
+    margin-bottom: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.controls button {
+    padding: 5px 10px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.controls button:hover {
+    animation: buttonGlitch 0.3s infinite;
+}
+
+.controls button:hover::before,
+.controls button:hover::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--accent-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+    animation: textShuffle 0.3s infinite;
+}
+
+.controls button:hover::before {
+    text-shadow: 2px 0 var(--glitch-color1);
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+}
+
+.controls button:hover::after {
+    text-shadow: -2px 0 var(--glitch-color2);
+    clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+    animation-delay: 0.15s;
+}
+
+.file-tree {
+    margin-bottom: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.folder {
+    margin-left: 20px;
+}
+
+.folder-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.folder-header:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.folder-content {
+    margin-left: 20px;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+}
+
+.file-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#compress-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+#compress-btn:hover:not(:disabled) {
+    animation: buttonGlitch 0.3s infinite;
+}
+
+#compress-btn:hover:not(:disabled)::before,
+#compress-btn:hover:not(:disabled)::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--accent-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+    animation: textShuffle 0.3s infinite;
+}
+
+#compress-btn:hover:not(:disabled)::before {
+    text-shadow: 2px 0 var(--glitch-color1);
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+}
+
+#compress-btn:hover:not(:disabled)::after {
+    text-shadow: -2px 0 var(--glitch-color2);
+    clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+    animation-delay: 0.15s;
+}
+
+#compress-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.progress-bar {
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    margin-top: 20px;
+    overflow: hidden;
+    display: none;
+}
+
+.progress {
+    height: 100%;
+    background-color: var(--accent-color);
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+@keyframes buttonGlitch {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-2px, 2px);
+    }
+    40% {
+        transform: translate(-2px, -2px);
+    }
+    60% {
+        transform: translate(2px, 2px);
+    }
+    80% {
+        transform: translate(2px, -2px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+@keyframes textShuffle {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-2px);
+    }
+    50% {
+        transform: translateX(2px);
+    }
+    75% {
+        transform: translateX(-1px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+
+/* Hacker theme */
+
+body.hacker-theme {
+    --bg-color: #000;
+    --text-color: #0f0;
+    --accent-color: #008000;
+    --hover-color: #006400;
+    --folder-color: #00ff00;
+    --file-color: #00cc00;
+    --glitch-color1: #00ff00;
+    --glitch-color2: #008000;
+}
+
+body.hacker-theme .file-tree {
+    border-color: var(--accent-color);
+}
+
+body.hacker-theme h1 {
+    animation: glitch 1s infinite;
+}
+
+.folder-icon::before {
+    content: "📁";
+    margin-right: 5px;
+}
+
+
+/* Default file icon */
+
+.file-icon::before {
+    content: "📄";
+    margin-right: 5px;
+}
+
+
+/* Image files */
+
+.file-icon.image::before {
+    content: "🖼️";
+}
+
+
+/* Code files */
+
+.file-icon.code::before {
+    content: "👨‍💻";
+}
+
+
+/* Document files */
+
+.file-icon.document::before {
+    content: "📝";
+}
+
+
+/* Archive files */
+
+.file-icon.archive::before {
+    content: "🗄️";
+}
+
+
+/* Audio files */
+
+.file-icon.audio::before {
+    content: "🎵";
+}
+
+
+/* Video files */
+
+.file-icon.video::before {
+    content: "🎥";
+}
+
+
+/* PDF files */
+
+.file-icon.pdf::before {
+    content: "📕";
+}
+
+
+/* Spreadsheet files */
+
+.file-icon.spreadsheet::before {
+    content: "📊";
+}
+
+
+/* Presentation files */
+
+.file-icon.presentation::before {
+    content: "📊";
+}
+
+
+/* Font files */
+
+.file-icon.font::before {
+    content: "🔤";
+}
+
+
+/* Database files */
+
+.file-icon.database::before {
+    content: "🗃️";
+}
+
+
+/* Executable files */
+
+.file-icon.executable::before {
+    content: "⚙️";
+}
+
+
+/* Hacker theme icons */
+
+body.hacker-theme .folder-icon::before {
+    content: ">";
+    color: var(--folder-color);
+}
+
+body.hacker-theme .file-icon::before {
+    content: "$";
+    color: var(--file-color);
+}
+
+body.hacker-theme .file-icon.image::before {
+    content: "IMG";
+}
+
+body.hacker-theme .file-icon.code::before {
+    content: "</>";
+}
+
+body.hacker-theme .file-icon.document::before {
+    content: "DOC";
+}
+
+body.hacker-theme .file-icon.archive::before {
+    content: "ZIP";
+}
+
+body.hacker-theme .file-icon.audio::before {
+    content: "AUD";
+}
+
+body.hacker-theme .file-icon.video::before {
+    content: "VID";
+}
+
+body.hacker-theme .file-icon.pdf::before {
+    content: "PDF";
+}
+
+body.hacker-theme .file-icon.spreadsheet::before {
+    content: "XLS";
+}
+
+body.hacker-theme .file-icon.presentation::before {
+    content: "PPT";
+}
+
+body.hacker-theme .file-icon.font::before {
+    content: "FNT";
+}
+
+body.hacker-theme .file-icon.database::before {
+    content: "SQL";
+}
+
+body.hacker-theme .file-icon.executable::before {
+    content: "EXE";
+}
+
+body.hacker-theme .folder-icon::before {
+    content: ">";
+    color: var(--folder-color);
+}
+
+body.hacker-theme .file-icon::before {
+    content: "$";
+    color: var(--file-color);
+}
+
+.empty-message {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-color);
+    font-style: italic;
+}
