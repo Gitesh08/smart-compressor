@@ -15,7 +15,7 @@ A modern, web-based file compression tool with a sleek interface and hacker them
 
 ## 🚀 Live Demo
 
-[Add your live demo link here]
+[live demo](https://smart-compressor.vercel.app/)
 
 ## 🛠️ Architecture
 
