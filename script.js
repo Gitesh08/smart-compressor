@@ -7,6 +7,7 @@ const progress = progressBar.querySelector('.progress');
 const selectAllBtn = document.getElementById('select-all');
 const deselectAllBtn = document.getElementById('deselect-all');
 const fileControls = document.getElementById('file-controls');
+const dropArea = document.getElementById('drop-area');
 
 // Set button text attributes for glitch effect
 selectAllBtn.setAttribute('data-text', 'Select All');
@@ -22,17 +23,136 @@ themeSwitch.addEventListener('change', () => {
 
 // File input handler
 fileInput.addEventListener('change', (e) => {
-    const files = Array.from(e.target.files);
-    if (files.length === 0) {
-        fileControls.classList.add('hidden');
-        return;
+    handleFiles(e.target.files);
+});
+
+// Drag and drop functionality
+['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    dropArea.addEventListener(eventName, preventDefaults, false);
+});
+
+function preventDefaults(e) {
+    e.preventDefault();
+    e.stopPropagation();
+}
+
+['dragenter', 'dragover'].forEach(eventName => {
+    dropArea.addEventListener(eventName, highlight, false);
+});
+
+['dragleave', 'drop'].forEach(eventName => {
+    dropArea.addEventListener(eventName, unhighlight, false);
+});
+
+function highlight(e) {
+    dropArea.classList.add('highlight');
+}
+
+function unhighlight(e) {
+    dropArea.classList.remove('highlight');
+}
+
+dropArea.addEventListener('drop', handleDrop, false);
+
+function handleDrop(e) {
+    const dt = e.dataTransfer;
+    const files = dt.items || dt.files;
+    handleFiles(files);
+}
+
+function handleFiles(fileList) {
+    fileStructure = {}; // Reset file structure
+    const promises = [];
+
+    for (let i = 0; i < fileList.length; i++) {
+        const item = fileList[i];
+        if (item.webkitGetAsEntry) {
+            const entry = item.webkitGetAsEntry();
+            if (entry) {
+                promises.push(processEntry(entry));
+            }
+        } else if (item.getAsFile) {
+            const file = item.getAsFile();
+            if (file) {
+                promises.push(processFile(file));
+            }
+        } else {
+            promises.push(processFile(item));
+        }
     }
 
-    fileStructure = createFileStructure(files);
-    fileControls.classList.remove('hidden');
-    renderFileTree(fileStructure);
-    compressBtn.disabled = files.length === 0;
-});
+    Promise.all(promises).then(() => {
+        if (Object.keys(fileStructure).length > 0) {
+            fileControls.classList.remove('hidden');
+            renderFileTree(fileStructure);
+            compressBtn.disabled = false;
+        }
+    });
+}
+
+
+function processEntry(entry, path = '') {
+    return new Promise((resolve) => {
+        if (entry.isFile) {
+            entry.file((file) => {
+                processFile(file, path + entry.name).then(resolve);
+            });
+        } else if (entry.isDirectory) {
+            const reader = entry.createReader();
+            reader.readEntries((entries) => {
+                const promises = entries.map((entry) => processEntry(entry, path + entry.name + '/'));
+                Promise.all(promises).then(resolve);
+            });
+        }
+    });
+}
+
+function processFile(file, path = file.webkitRelativePath || file.name) {
+    return new Promise((resolve) => {
+        const parts = path.split('/');
+        let current = fileStructure;
+
+        for (let i = 0; i < parts.length - 1; i++) {
+            const part = parts[i];
+            if (!current[part]) {
+                current[part] = {
+                    type: 'folder',
+                    children: {},
+                    isExpanded: true
+                };
+            }
+            current = current[part].children;
+        }
+
+        const fileName = parts[parts.length - 1];
+        current[fileName] = {
+            type: 'file',
+            file: file,
+            selected: true
+        };
+
+        resolve();
+    });
+}
+
+function traverseDirectory(entry) {
+    const reader = entry.createReader();
+    reader.readEntries(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isFile) {
+                entry.file(function(file) {
+                    file.webkitRelativePath = entry.fullPath.substring(1);
+                    fileStructure = createFileStructure([file]);
+                    fileControls.classList.remove('hidden');
+                    renderFileTree(fileStructure);
+                    compressBtn.disabled = false;
+                });
+            } else if (entry.isDirectory) {
+                traverseDirectory(entry);
+            }
+        });
+    });
+}
 
 function getFileIconClass(filename) {
     const extension = filename.split('.').pop().toLowerCase();

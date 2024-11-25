@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Smart Compressor</title>
+    <title>Smart Compressor</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -12,12 +12,13 @@
     <div class="container">
         <h1>Smart Compressor</h1>
         <div class="theme-toggle">
-            <label for="theme-switch">Hacker Theme</label>
+            <label for="theme-switch">Dark Mode</label>
             <input type="checkbox" id="theme-switch">
         </div>
-        <div class="file-upload">
+        <div id="drop-area" class="file-upload">
             <input type="file" id="file-input" webkitdirectory directory multiple>
             <label for="file-input" class="upload-btn">Upload Folder</label>
+            <p>or drag and drop files here</p>
         </div>
         <div id="file-controls" class="hidden">
             <div class="controls">
