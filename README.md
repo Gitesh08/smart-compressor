@@ -15,7 +15,7 @@ A modern, web-based file compression tool with a sleek interface and hacker them
 
 ## 🚀 Live Demo
 
-[live demo](https://smart-compressor.vercel.app/)
+[Add your live demo link here]
 
 ## 🛠️ Architecture
 
@@ -244,4 +244,4 @@ Include:
 
 ---
 
-Made with ❤️ by Gitesh
+Made with ❤️ by [Your Name]
