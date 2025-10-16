@@ -134,7 +134,7 @@ git push origin feature/AmazingFeature
 
 ## 📝 License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the MIT License.
 
 ## 👏 Acknowledgments
 
@@ -162,8 +162,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## 📫 Meet Developers
 
-[Gitesh Mahadik](https://www.linkedin.com/in/gitesh-mahadik-7487961a0/)
-[Yashshree Shah](https://github.com/yashshree7)
+[Gitesh Mahadik](https://www.linkedin.com/in/gitesh-mahadik-7487961a0/) | [Yashshree Shah](https://github.com/yashshree7)
 
 ## 🐛 Bug Reports
 
