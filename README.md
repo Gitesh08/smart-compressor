@@ -1,41 +1,24 @@
-# Smart Compressor 🗜️
+# Smart Compressor
 
-A modern, web-based file compression tool with a sleek interface and hacker theme option. Smart Compressor allows users to compress multiple files and folders while maintaining directory structure, with a stylish progress visualization and file type recognition.
+Smart Compressor allows users to compress multiple files and folders while maintaining directory structure, with a stylish progress visualization and file type recognition.
 
 ## 🌟 Features
 
 - 📁 Folder and multiple file compression
 - 🌳 Preserves directory structure
 - 🎯 Selective file compression
-- 💻 Hacker theme toggle
 - 📊 Real-time compression progress
 - 🎨 File type recognition with custom icons
 - ⚡ Client-side compression
-- 🔥 Glitch effect animations
 
 ## 🚀 Live Demo
 
-[Add your live demo link here]
+[[Smart Compressor](https://smart-compressor.vercel.app/)]
 
 ## 🛠️ Architecture
 
-```mermaid
-flowchart TD
-    A[User Interface] --> B[File Input Handler]
-    B --> C[File Structure Creator]
-    C --> D[File Tree Renderer]
-    D --> E[File Selection Manager]
-    E --> F[Compression Engine]
-    F --> G[Download Handler]
+<img width="2076" height="1086" alt="mermaid-diagram-2025-10-17-000851" src="https://github.com/user-attachments/assets/ce4a0844-5c1d-4102-8c84-22148fafb952" />
 
-    style A fill:#4CAF50,color:white
-    style B fill:#45a049,color:white
-    style C fill:#45a049,color:white
-    style D fill:#45a049,color:white
-    style E fill:#45a049,color:white
-    style F fill:#45a049,color:white
-    style G fill:#4CAF50,color:white
-```
 
 ## 🔧 Technologies Used
 
@@ -97,21 +80,6 @@ cd smart-compressor
 5. Monitor progress through the animated progress bar
 6. The compressed file will automatically download as 'compressed_files.zip'
 
-## 🎨 Themes
-
-### Light Theme (Default)
-- Clean, professional interface
-- White background
-- Green accent colors
-- Standard file icons
-
-### Hacker Theme
-- Matrix-inspired dark interface
-- Terminal-like appearance
-- Green-on-black color scheme
-- Text-based file icons
-- Glitch animations on hover
-
 ## 📁 File Type Support
 
 ### Images
@@ -139,39 +107,6 @@ cd smart-compressor
 - 🔤 ttf, otf, woff, woff2, eot (Fonts)
 - 🗃️ sql, db, sqlite, mdb (Databases)
 - ⚙️ exe, msi, app, dmg (Executables)
-
-## ⚙️ Technical Implementation
-
-### File Structure Creation
-```javascript
-function createFileStructure(files) {
-    const structure = {};
-    files.forEach(file => {
-        const parts = file.webkitRelativePath.split('/');
-        let current = structure;
-        // ... structure creation logic
-    });
-    return structure;
-}
-```
-
-### UI Rendering
-- Dynamic DOM manipulation
-- Event delegation for performance
-- Recursive rendering for nested structures
-- Real-time updates
-
-### Compression Engine
-- Asynchronous processing
-- Progress tracking
-- Memory efficient
-- Error handling
-
-### Theme Management
-- CSS custom properties
-- Dynamic class toggling
-- Local storage persistence
-- Smooth transitions
 
 ## 🤝 Contributing
 
@@ -225,16 +160,15 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 - Multiple theme options
 - Enhanced error handling
 
-## 📫 Contact
+## 📫 Meet Developers
 
-Developer Name - [Gitesh Mahadik](https://www.linkedin.com/in/gitesh-mahadik-7487961a0/)
-
-Project Link: [https://github.com/Gitesh08/smart-compressor](https://github.com/yourusername/smart-compressor)
+[Gitesh Mahadik](https://www.linkedin.com/in/gitesh-mahadik-7487961a0/)
+[Yashshree Shah](https://github.com/yashshree7)
 
 ## 🐛 Bug Reports
 
 Please report bugs through the GitHub issues page:
-[https://github.com/Gitesh08/smart-compressor/issues](https://github.com/yourusername/smart-compressor/issues)
+[https://github.com/Gitesh08/smart-compressor/issues](https://github.com/Gitesh08/smart-compressor/issues)
 
 Include:
 - Browser and version
@@ -244,4 +178,4 @@ Include:
 
 ---
 
-Made with ❤️ by [Your Name]
+Made with ❤️ by [Gitesh](https://github.com/Gitesh08/smart-compressor)
